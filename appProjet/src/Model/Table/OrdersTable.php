@@ -36,23 +36,6 @@ class OrdersTable extends Table
 
     // avant de sauvegarder on créer les steps
 
-    public function afterSave($event,$entity,$options){
-            foreach($this->OrdersProvidersSteps->Steps->find('all') AS $step){
-            $stepToRegister = array('state' => false,
-                            'order_id' => 1,
-                            'provider_id' => 1,
-                            'step_id' => $step['id'],
-                            'note' => ''
-                            );
-            
-
-            }
-            $OrderProviderStep = $this->OrdersProvidersSteps->newEntity();
-            die();
-
-            return true;
-
-    }
 
     /**
      * Default validation rules.

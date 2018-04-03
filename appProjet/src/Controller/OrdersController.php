@@ -53,6 +53,19 @@ class OrdersController extends AppController
         if ($this->request->is('post')) {
             $order = $this->Orders->patchEntity($order, $this->request->getData());
             if ($this->Orders->save($order)) {
+
+                foreach($this->Orders->OrdersProvidersSteps->Steps->find('all') AS $step){
+            $stepToRegister = array('state' => false,
+                            'order_id' => 1,
+                            'provider_id' => 1,
+                            'step_id' => $step['id'],
+                            'note' => ''
+                            );
+            $OrderProviderStep = $this->Orders->OrdersProvidersSteps->newEntity();
+            $OrderProviderStep = $this->Orders->OrdersProvidersSteps->patchEntity($OrderProviderStep,$stepToRegister);
+            $this->Orders->OrdersProvidersSteps->save($OrderProviderStep);
+
+            }
                 $this->Flash->success(__('The order has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
