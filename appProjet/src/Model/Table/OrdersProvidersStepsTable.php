@@ -62,7 +62,7 @@ class OrdersProvidersStepsTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator)
+   /* public function validationDefault(Validator $validator)
     {
         $validator
             ->integer('id')
@@ -74,12 +74,10 @@ class OrdersProvidersStepsTable extends Table
             ->notEmpty('state');
 
         $validator
-            ->scalar('note')
-            ->requirePresence('note', 'create')
-            ->notEmpty('note');
+            ->scalar('note');
 
         return $validator;
-    }
+    }*/
 
     /**
      * Returns a rules checker object that will be used for validating

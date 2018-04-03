@@ -59,7 +59,7 @@ class OrdersController extends AppController
                             'order_id' => 1,
                             'provider_id' => 1,
                             'step_id' => $step['id'],
-                            'note' => ''
+                            'note' => '  '
                             );
             $OrderProviderStep = $this->Orders->OrdersProvidersSteps->newEntity();
             $OrderProviderStep = $this->Orders->OrdersProvidersSteps->patchEntity($OrderProviderStep,$stepToRegister);
@@ -67,7 +67,6 @@ class OrdersController extends AppController
 
             }
                 $this->Flash->success(__('The order has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The order could not be saved. Please, try again.'));
